@@ -86,6 +86,35 @@ class MainActivity : BaseActivity(), BrowserView.Host {
     override fun onResume() {
         super.onResume()
         browser.onResume()
+        setupStep()
+    }
+
+    /** First-run setup: media access, then all files, then the system default, one step per return to the app. */
+    private fun setupStep() {
+        if (!Perms.hasMedia(this) && !Store.bool(this, "ask_media", false)) {
+            Store.setBool(this, "ask_media", true)
+            requestMedia()
+            return
+        }
+        if (!Perms.hasAllFiles(this) && !Store.bool(this, "ask_files", false)) {
+            Store.setBool(this, "ask_files", true)
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle(R.string.setup_files_title)
+                .setMessage(R.string.setup_files_msg)
+                .setPositiveButton(R.string.continue_label) { _, _ -> requestAllFiles() }
+                .setNegativeButton(R.string.later, null)
+                .show()
+            return
+        }
+        if (!Defaults.isDefault(this, Defaults.filePicker()) && !Store.bool(this, "ask_default", false)) {
+            Store.setBool(this, "ask_default", true)
+            androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle(R.string.setup_default_title)
+                .setMessage(R.string.setup_default_msg)
+                .setPositiveButton(R.string.continue_label) { _, _ -> Defaults.make(this, Defaults.filePicker()) }
+                .setNegativeButton(R.string.later, null)
+                .show()
+        }
     }
 
     override fun onAccessChanged() {

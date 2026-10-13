@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 /** Base of every screen: system bar icons follow day / night, insets are applied, permission and system picker helpers. */
 abstract class BaseActivity : AppCompatActivity() {
     private val permLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+        if (!Perms.hasMedia(this)) Store.setBool(this, "media_denied", true)
         onAccessChanged()
     }
 
@@ -64,6 +65,11 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     fun requestMedia() {
+        // after a refusal Android stops showing the dialog, so send the user to the permission page instead
+        if (Store.bool(this, "media_denied", false) && !Perms.hasMedia(this)) {
+            Perms.openAppSettings(this)
+            return
+        }
         permLauncher.launch(Perms.mediaPerms())
     }
 

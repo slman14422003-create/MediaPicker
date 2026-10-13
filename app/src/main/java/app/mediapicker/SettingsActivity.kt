@@ -80,64 +80,15 @@ class SettingsActivity : BaseActivity() {
         render()
     }
 
-    private fun filePickerIntent(): Intent {
-        val i = Intent(Intent.ACTION_GET_CONTENT)
-        i.type = "*/*"
-        i.addCategory(Intent.CATEGORY_OPENABLE)
-        return i
-    }
+    private fun filePickerIntent() = Defaults.filePicker()
 
-    private fun photoPickerIntent(): Intent {
-        val i = Intent("android.provider.action.PICK_IMAGES")
-        i.type = "image/*"
-        return i
-    }
+    private fun photoPickerIntent() = Defaults.photoPicker()
 
-    /** True when this app is the one that answers the request without asking. */
-    private fun isDefault(i: Intent): Boolean {
-        val ri = packageManager.resolveActivity(i, PackageManager.MATCH_DEFAULT_ONLY)
-        return ri != null && ri.activityInfo.packageName == packageName
-    }
+    private fun isDefault(i: Intent) = Defaults.isDefault(this, i)
 
-    private fun makeDefault(i: Intent) {
-        val ri = packageManager.resolveActivity(i, PackageManager.MATCH_DEFAULT_ONLY)
-        val pkg = ri?.activityInfo?.packageName
-        val noDefault = ri == null || ri.activityInfo.name.contains("Resolver", ignoreCase = true)
-        when {
-            pkg == packageName -> openDefaultApps()
-            noDefault -> {
-                try {
-                    startActivity(i)
-                } catch (e: Exception) {
-                    openDefaultApps()
-                }
-            }
-            else -> {
-                AlertDialog.Builder(this)
-                    .setTitle(R.string.default_other_title)
-                    .setMessage(R.string.default_other_msg)
-                    .setPositiveButton(R.string.open_settings) { _, _ ->
-                        try {
-                            startActivity(
-                                Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$pkg"))
-                            )
-                        } catch (e: Exception) {
-                            openDefaultApps()
-                        }
-                    }
-                    .setNegativeButton(R.string.cancel, null)
-                    .show()
-            }
-        }
-    }
+    private fun makeDefault(i: Intent) = Defaults.make(this, i)
 
-    private fun openDefaultApps() {
-        try {
-            startActivity(Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS))
-        } catch (e: Exception) {
-            Perms.openAppSettings(this)
-        }
-    }
+    private fun openDefaultApps() = Defaults.openApps(this)
 
     private fun appLabel(cat: Cat, pkg: String?): String {
         if (pkg == null) return getString(R.string.ask_every_time)
