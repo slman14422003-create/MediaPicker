@@ -70,4 +70,25 @@ object Defaults {
                 .show()
         }
     }
+
+    /** Plain-text report of who answers each picker request and with what priority. */
+    fun report(c: Context): String {
+        val pm = c.packageManager
+        val sb = StringBuilder()
+        val named = listOf("GET_CONTENT" to filePicker(), "PICK_IMAGES" to photoPicker())
+        for ((label, i) in named) {
+            sb.append(label).append('\n')
+            val best = pm.resolveActivity(i, PackageManager.MATCH_DEFAULT_ONLY)
+            sb.append("  chosen: ").append(best?.activityInfo?.packageName ?: "none")
+                .append(" / ").append(best?.activityInfo?.name?.substringAfterLast('.') ?: "").append('\n')
+            val all = pm.queryIntentActivities(i, PackageManager.MATCH_DEFAULT_ONLY or PackageManager.GET_RESOLVED_FILTER)
+            for (r in all) {
+                sb.append("  - ").append(r.activityInfo.packageName)
+                    .append("  priority=").append(r.priority)
+                    .append("  filterPriority=").append(r.filter?.priority ?: 0)
+                    .append("  preferred=").append(r.preferredOrder).append('\n')
+            }
+        }
+        return sb.toString()
+    }
 }

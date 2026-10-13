@@ -163,6 +163,18 @@ class SettingsActivity : BaseActivity() {
                 Row(R.drawable.ic_settings, getString(R.string.default_apps), getString(R.string.default_apps_sub), GRAY)
             ) { openDefaultApps() }
         )
+        content.addView(
+            Ui.rowView(
+                c, content,
+                Row(R.drawable.ic_info, getString(R.string.diagnose), getString(R.string.diagnose_sub), GRAY)
+            ) {
+                AlertDialog.Builder(c)
+                    .setTitle(R.string.diagnose)
+                    .setMessage(Defaults.report(c))
+                    .setPositiveButton(R.string.done, null)
+                    .show()
+            }
+        )
         content.addView(Ui.footer(c, getString(R.string.default_note)))
 
         // browser options

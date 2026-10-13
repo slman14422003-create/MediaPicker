@@ -101,4 +101,6 @@
     <string name="setup_default_title">Replace the system picker</string>
     <string name="setup_default_msg">Choose Media Picker and tap Always in the window that appears. Repeat for the photo picker in Settings.</string>
     <string name="open_apps_list">Apps list</string>
+    <string name="diagnose">Diagnose</string>
+    <string name="diagnose_sub">Show which app answers each picker request</string>
 </resources>
