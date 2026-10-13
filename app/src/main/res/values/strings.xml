@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Media Picker</string>
+
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="error">Something went wrong</string>
+    <string name="up">Up one folder</string>
+    <string name="share">Share</string>
+    <string name="search">Search</string>
+    <string name="empty">Nothing here</string>
+    <string name="folder">Folder</string>
+    <string name="internal_storage">Internal storage</string>
+    <string name="open_with">Open with</string>
+    <string name="no_app">No app can open this file</string>
+    <string name="open_settings">Open settings</string>
+
+    <string name="tab_media">Media</string>
+    <string name="tab_files">Files</string>
+    <string name="f_all">All</string>
+    <string name="f_photos">Photos</string>
+    <string name="f_videos">Videos</string>
+    <string name="f_audio">Audio</string>
+    <string name="all_albums">All albums</string>
+
+    <string name="pick_title">Select</string>
+    <string name="pick_selected">%d selected</string>
+
+    <string name="sort_by">Sort by</string>
+    <string name="sort_date">Date</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_size">Size</string>
+
+    <string name="state_media_title">Allow access to your media</string>
+    <string name="state_media_msg">Photos, videos and audio are shown here so you can pick them for any app.</string>
+    <string name="state_files_title">Allow access to all files</string>
+    <string name="state_files_msg">Needed to browse every folder and open any file type. You can also use the system file browser.</string>
+    <string name="allow_access">Allow access</string>
+    <string name="allow_all_files">Allow all files access</string>
+    <string name="browse_system">System file browser</string>
+
+    <string name="settings">Settings</string>
+    <string name="set_version">Version %s</string>
+    <string name="theme_title">Appearance</string>
+    <string name="theme_auto">Automatic</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+
+    <string name="set_default">Default picker</string>
+    <string name="default_files">File picker</string>
+    <string name="default_files_sub">Used when an app asks you to choose a file</string>
+    <string name="default_photos">Photo picker</string>
+    <string name="default_photos_sub">Used when an app asks you to choose photos or videos</string>
+    <string name="default_apps">Default apps</string>
+    <string name="default_apps_sub">Open the system default apps settings</string>
+    <string name="default_note">Tap a picker, then choose Media Picker and Always in the window that appears.</string>
+    <string name="default_other_title">Another app is the default</string>
+    <string name="default_other_msg">Open its settings and clear its defaults, then try again.</string>
+    <string name="status_default">Default</string>
+    <string name="status_not_set">Not set</string>
+
+    <string name="set_browser">Browser</string>
+    <string name="columns">Grid columns</string>
+    <string name="show_hidden">Show hidden files</string>
+    <string name="show_hidden_sub">Files and folders that start with a dot</string>
+    <string name="handle_open">Open files from other apps</string>
+    <string name="handle_open_sub">Receive files from other apps and forward them to the linked app</string>
+
+    <string name="set_link">Open with</string>
+    <string name="ask_every_time">Ask every time</string>
+    <string name="link_note">Choose which app opens each type of file.</string>
+    <string name="cat_image">Images</string>
+    <string name="cat_video">Videos</string>
+    <string name="cat_audio">Audio</string>
+    <string name="cat_pdf">PDF documents</string>
+    <string name="cat_text">Text and code</string>
+    <string name="cat_office">Office documents</string>
+    <string name="cat_archive">Archives</string>
+    <string name="cat_apk">Apps (APK)</string>
+    <string name="cat_other">Other files</string>
+
+    <string name="set_access">Permissions</string>
+    <string name="set_media_access">Photos, videos and audio</string>
+    <string name="set_all_files">All files access</string>
+    <string name="set_all_files_sub">Browse every folder and file type</string>
+    <string name="set_install">Install apps</string>
+    <string name="set_install_sub">Open APK files with the installer</string>
+    <string name="set_app_perms">App permissions</string>
+    <string name="set_app_perms_sub">Open the system page for this app</string>
+    <string name="access_granted">Allowed</string>
+    <string name="access_partial">Selected items</string>
+    <string name="access_denied">Not allowed</string>
+
+    <string name="set_about">About</string>
+    <string name="about_note">Works with every file type. Files are read in place and never leave the device.</string>
+</resources>
