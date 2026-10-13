@@ -54,9 +54,9 @@
     <string name="default_photos_sub">Used when an app asks you to choose photos or videos</string>
     <string name="default_apps">Default apps</string>
     <string name="default_apps_sub">Open the system default apps settings</string>
-    <string name="default_note">Tap a picker, then choose Media Picker and Always in the window that appears.</string>
+    <string name="default_note">Android does not allow an installed app to replace the built-in picker. Media Picker appears in the side menu of the system file picker in every app.</string>
     <string name="default_other_title">Another app is the default</string>
-    <string name="default_other_msg">The system picker is set as the default, so the choice window never appears. Open the apps list, tap the three dots, choose Reset app preferences, then come back and tap this row again and pick Media Picker with Always.</string>
+    <string name="default_other_msg">Android gives the built-in picker priority that no installed app can match, so this cannot be switched. Open any app's file picker, tap the menu at the top left and choose Media Picker instead.</string>
     <string name="status_default">Default</string>
     <string name="status_not_set">Not set</string>
 

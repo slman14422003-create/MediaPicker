@@ -137,6 +137,18 @@
             android:name=".SettingsActivity"
             android:exported="false" />
 
+        <!-- shows Media Picker as a storage inside the system file picker of every app -->
+        <provider
+            android:name=".FilesProvider"
+            android:authorities="${applicationId}.documents"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.files"
